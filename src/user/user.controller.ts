@@ -1,13 +1,20 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
-import { Request } from 'express';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { User } from '@prisma/client';
+import { GetUser } from 'src/auth/decorator';
 import { JwtGuard } from 'src/auth/guard';
 
+@UseGuards(JwtGuard)  // Guards le Strategy lai check garxa token xa kinai ani valid token xa kinai vanera // JwtGuard custom Guard ho 
 @Controller('users')
 export class UserController {
 
-    @UseGuards(JwtGuard)  // Guards le Strategy lai check garxa token xa kinai ani valid token xa kinai vanera
     @Get('me')
-    getMe(@Req() req: Request){
-        return req.user;
+    getMe(@GetUser() users: User ){   // @GetUser custom decorator ho
+        return users;
     }
+
+  
 }
+
+
+// Get ma usually 200 StatusCode fyakxa
+// Post le 201 StatusCode fyakxa

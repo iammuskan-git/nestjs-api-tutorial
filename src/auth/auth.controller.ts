@@ -1,4 +1,4 @@
-import { Body, Controller , ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller , HttpCode, HttpStatus, ParseIntPipe, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
 
@@ -10,12 +10,14 @@ export class AuthController {
     // return le jun dataype ko return garxa tei datatype automatically gayera basxa POSTMAN ko headers content-type my text/html or appliaction/json vanera
     constructor(private authService: AuthService) {}
 
+    @HttpCode(HttpStatus.OK)    // @HttpCode decorator mostly used
     //POST /auth/signup
     @Post("signup")
     signup(@Body() dto: AuthDto){
         return this.authService.signup(dto);
     }
 
+    @HttpCode(HttpStatus.OK)
     //POST /auth/signin
     @Post("signin")
     signin(@Body() dto: AuthDto){
