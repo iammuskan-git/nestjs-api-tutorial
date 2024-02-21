@@ -1,5 +1,6 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller , ParseIntPipe, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { AuthDto } from './dto';
 
 // class or AuthController is annotated with decorator Controller()
 // Controller is handling incoming request and sending response back to the browser
@@ -11,13 +12,13 @@ export class AuthController {
 
     //POST /auth/signup
     @Post("signup")
-    signup(){
-        return { message: "Signup Function"}
+    signup(@Body() dto: AuthDto){
+        return this.authService.signup(dto);
     }
 
     //POST /auth/signin
     @Post("signin")
     signin(){
-        return "Signin Function"
+        return this.authService.signin();
     }
 }
