@@ -9,7 +9,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt'){
     
     constructor(
         config: ConfigService, 
-        private prisma: PrismaService,
+        private prisma: PrismaService,  // PrismaService lai inject gareko database bata data tanna ko lagi
         ) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
