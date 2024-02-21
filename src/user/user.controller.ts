@@ -8,9 +8,6 @@ export class UserController {
     @UseGuards(AuthGuard('jwt'))  // Guards le Strategy lai check garxa token xa kinai ani valid token xa kinai vanera
     @Get('me')
     getMe(@Req() req: Request){
-        console.log({
-            user: req.user
-        })
-        return 'User Info';
+        return req.user;
     }
 }
