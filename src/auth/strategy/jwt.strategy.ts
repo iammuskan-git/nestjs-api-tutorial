@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "../../prisma/prisma.service";
 
 @Injectable()   // yo strategy le ni inject gareko xa ni ta config JWT_SECRET ko lagi 
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt'){

@@ -10,7 +10,7 @@ async function bootstrap() {
       whitelist: true  // AuthDto ma navako field haru dekhaudaina
     }
   ));
-  await app.listen(3333);
+  await app.listen(3334);
 }
 bootstrap();
 

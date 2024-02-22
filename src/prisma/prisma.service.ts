@@ -16,5 +16,14 @@ export class PrismaService extends PrismaClient {
         });
     }
 
+    // in testing environment ma chai user an bookmark model clean huna parxa hai database ma
+    cleanDb() {
+        return this.$transaction([
+            this.bookmark.deleteMany(),
+            this.user.deleteMany(),
+        ]);
+    }
+
+
 
 }
